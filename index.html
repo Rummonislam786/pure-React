@@ -14,7 +14,25 @@
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <script>
       function App() {
-        return React.createElement("header", null, "Hello, World!");
+        //const time = new Date().toLocaleTimeString();
+        // This is a simple React component that displays the current time
+        // It uses React.createElement to create the element
+        // and ReactDOM to render it to the DOM
+        // You can replace this with any other React component
+
+        const [time, setTime] = React.useState(new Date().toLocaleTimeString());
+
+        React.useEffect(() => {
+          const timer = setInterval(() => {
+            setTime(new Date().toLocaleTimeString());
+          }, 1000);
+        }, []);
+
+        return React.createElement(
+          "header",
+          null,
+          `Hello, World! it's ${time}`
+        );
       }
 
       const root = ReactDOM.createRoot(document.getElementById("root"));
